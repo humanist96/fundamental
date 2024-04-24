@@ -32,7 +32,7 @@ pio.templates["myID"] = go.layout.Template(
     layout_annotations=[
         dict(
             name="draft watermark",
-            text="Graph by 기하급수적",
+            text="Graph by Kevin",
             textangle=0,
             opacity=0.5,
             font=dict(color="black", size=10),
@@ -945,7 +945,7 @@ def draw_senti_together(maesu_index, city_lists, last_week):
                         visible=False
                     ),
                     type="date",
-                    range=[kor_time - relativedelta(years=5), kor_time]
+                    range=[kor_time - relativedelta(years=1), kor_time]
                     )      
                 )
     fig.update_layout(template="myID")
@@ -1194,3 +1194,63 @@ def displot(last_df, last_odf, flag): #KDE
                             colors=colors)
     fig.update_layout(title = title, titlefont_size=15, legend=dict(orientation="h"), template="myID")
     st.plotly_chart(fig, use_container_width=True)
+
+
+def change_number_chart(updown_count, flag, flag2):
+    titles = dict(text='<b>'+flag+'</b> 주간 아파트 '+ flag2+' 변동 지역 분포 추이', x=0.5, y = 0.95, xanchor='center', yanchor= 'top')
+    x_data = updown_count.index # EPS발표 날짜로
+    fig = make_subplots(specs=[[{'secondary_y': True}]])
+    y_data_bar = ['상승', '변동없음','하락']
+    marker_color_custom = ['rgb(205,32,40)','rgb(27,38,81)', 'rgb(22,108,150)']
+
+    for y_data, color in zip(y_data_bar, marker_color_custom) :
+        fig.add_trace(go.Bar(name = y_data, x =x_data, y = updown_count[y_data], marker_color= color,
+                        text= updown_count[y_data], textposition = 'auto'),
+                        secondary_y = False)
+    fig.update_traces(texttemplate='%{text:.3s}')
+    fig.update_yaxes(title_text='지역분포',showticklabels= True, showgrid = False, zeroline=True, ticksuffix="%", secondary_y = True)
+    fig.update_layout(title = titles, titlefont_size=15, legend=dict(orientation="h"), template=template, barmode='stack')#, xaxis_tickformat = 'd')#  legend_title_text='( 단위 : $)'
+    fig.update_layout(template="myID")
+    fig.update_layout(
+                showlegend=True,
+                legend=dict(
+                orientation="h",
+                yanchor="bottom",
+                y=1.02,
+                xanchor="right",
+                x=1
+            ),
+                xaxis=go.layout.XAxis(
+                rangeselector=dict(
+                    buttons=list([
+                        dict(count=6,
+                            label="6m",
+                            step="month",
+                            stepmode="backward"),
+                        dict(count=1,
+                            label="YTD",
+                            step="year",
+                            stepmode="todate"),
+                        dict(count=1,
+                            label="1y",
+                            step="year",
+                            stepmode="backward"),
+                        dict(count=5,
+                            label="5y",
+                            step="year",
+                            stepmode="backward"),
+                        dict(count=10,
+                            label="10y",
+                            step="year",
+                            stepmode="backward"),
+                        dict(step="all")
+                    ])
+                ),
+                rangeslider=dict(
+                    visible=False
+                ),
+                type="date",
+                range=[utcnow - relativedelta(years=1), utcnow]
+                )
+            )
+    st.plotly_chart(fig)

@@ -27,7 +27,7 @@ pio.templates["myID"] = go.layout.Template(
     layout_annotations=[
         dict(
             name="draft watermark",
-            text="Graph by 기하급수적",
+            text="Graph by Kevin",
             textangle=0,
             opacity=0.3,
             font=dict(color="black", size=10),

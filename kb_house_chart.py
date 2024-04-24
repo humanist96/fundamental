@@ -74,7 +74,7 @@ pio.templates["myID"] = go.layout.Template(
     layout_annotations=[
         dict(
             name="draft watermark",
-            text="graph by 기하급수적",
+            text="graph by Kevin",
             textangle=0,
             opacity=0.2,
             font=dict(color="black", size=10),
@@ -1332,7 +1332,7 @@ if __name__ == "__main__":
             margin-right: auto;
             border-style: inset;
             border-width: 1.5px;">
-            <p style="color:Gainsboro; text-align: right;">By: sizipusx2@gmail.com</p>
+            <p style="color:Gainsboro; text-align: right;">By: humanist966@gmail.com</p>
             """
             st.markdown(html_br, unsafe_allow_html=True)
     else:
