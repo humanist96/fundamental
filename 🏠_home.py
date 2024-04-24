@@ -25,7 +25,6 @@ st.markdown(
     - ⚛️ korchart : 국내 상장 주식의 기대수익률과 기본적인 재무 데이터 차트 보기
     - 💸 us-chart : 미국 상장 주식의 기대수익률과 기본적인 재무 데이터 차트 보기
     ### See more 
-    - Check out my blog : [Kevin](https://blog.naver.com/indiesoul2)
     - Ask a question in my E-mail : <humanist96@gmail.com>
 """
 )

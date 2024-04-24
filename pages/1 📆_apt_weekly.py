@@ -1483,7 +1483,7 @@ html_line="""
 st.markdown(html_line, unsafe_allow_html=True)
 st.markdown(
 """
-By: [Kevin](https://blog.naver.com/indiesoul2) / (humanist96@gmail.com)
+By: [Kevin](humanist96@gmail.com)
 
 """)
 
