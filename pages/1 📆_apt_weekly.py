@@ -27,7 +27,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 from matplotlib import font_manager, rc
 import seaborn as sns
-cmap = cmap=sns.diverging_palette(250, 5, as_cmap=True)
+cmap = sns.diverging_palette(250, 5, as_cmap=True)
 
 # font_list = [font.name for font in font_manager.fontManager.ttflist]
 # st.write(font_list)
@@ -76,7 +76,7 @@ pio.templates["myID"] = go.layout.Template(
     layout_annotations=[
         dict(
             name="draft watermark",
-            text="graph by Kevin",
+            text="graph by 기하급수적",
             textangle=0,
             opacity=0.2,
             font=dict(color="black", size=10),
@@ -970,17 +970,18 @@ if __name__ == "__main__":
         x = np.array(lst)
         return np.unique(x)
 
-    font_dirs = [os.getcwd() + './Nanum_Gothic/NanumGothic-Bold.ttf']
-    st.write(os.getcwd())
-    #font_dirs = "https://github.com/sizipusx/fundamental/blob/88d572cbf21800d0240f2fe2320036557ef0a140/Nanum_Gothic/NanumGothic-Bold.ttf"
-    font_files = fm.findSystemFonts(fontpaths=font_dirs)
+    # font_dirs = [os.getcwd() + '/Nanum_Gothic/NanumGothic-Bold.ttf']
+    # # font_dirs = "Nanum_Gothic/NanumGothic-Bold.ttf"
+    # # st.write(os.getcwd())
+    # #font_dirs = "https://github.com/sizipusx/fundamental/blob/88d572cbf21800d0240f2fe2320036557ef0a140/Nanum_Gothic/NanumGothic-Bold.ttf"
+    # font_files = fm.findSystemFonts(fontpaths=font_dirs)
 
-    for font_file in font_files:
-        fm.fontManager.addfont(font_file)
-    fm._load_fontmanager(try_read_cache=False)
+    # for font_file in font_files:
+    #     fm.fontManager.addfont(font_file)
+    # fm._load_fontmanager(try_read_cache=False)
 
-    fontNames = [f.name for f in fm.fontManager.ttflist]
-    fontname = st.selectbox("폰트 선택", unique(fontNames))
+    # fontNames = [f.name for f in fm.fontManager.ttflist]
+    # fontname = st.selectbox("폰트 선택", unique(fontNames))
     
     org = kb_df['지역']
     org = org.str.split(" ", expand=True)
@@ -1432,7 +1433,7 @@ if __name__ == "__main__":
             margin-right: auto;
             border-style: inset;
             border-width: 1.5px;">
-            <p style="color:Gainsboro; text-align: right;">By: humanist96@gmail.com</p>
+            <p style="color:Gainsboro; text-align: right;">By: sizipusx2@gmail.com</p>
             """
             st.markdown(html_br, unsafe_allow_html=True)
     else:
@@ -1486,5 +1487,3 @@ st.markdown(
 By: [Kevin](humanist96@gmail.com)
 
 """)
-
-
